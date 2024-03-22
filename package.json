@@ -1,0 +1,73 @@
+{
+  "name": "vscode-lsp-config",
+  "displayName": "LSP Config",
+  "description": "Configure custom Language Servers",
+  "icon": "icon.png",
+  "author": "Pepe Becker",
+  "license": "ISC",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pepebecker/vscode-lsp-config"
+  },
+  "publisher": "pepebecker",
+  "categories": [],
+  "keywords": [
+    "lsp", "language server"
+  ],
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "activationEvents": [
+    "onLanguage:plaintext"
+  ],
+  "main": "./dist/extension",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "LSP Config",
+      "properties": {
+        "lspConfig.servers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "title": "Servers",
+            "properties": {
+              "language": {
+                "type": "string",
+                "description": "Language"
+              },
+              "cmd": {
+                "type": "string",
+                "description": "Command"
+              },
+              "args": {
+                "type": "string",
+                "description": "Arguments"
+              }
+            }
+          },
+          "default": []
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "postinstall": "npm install",
+    "compile": "tsc -b",
+    "watch": "tsc -b -w",
+    "lint": "eslint ./src --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.6",
+    "@types/vscode": "^1.75.1",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3"
+  }
+}
